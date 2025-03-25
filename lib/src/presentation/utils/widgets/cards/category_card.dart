@@ -4,29 +4,28 @@ class CategoryCard extends StatelessWidget {
   final String title;
   final IconData icon;
   final String description;
-
+  final Function()? onTap;
   const CategoryCard({
     Key? key,
     required this.title,
     required this.icon,
     required this.description,
+    this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Responsive o'lchamlar
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Card(
-      elevation: 2,
+      elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
       color: Theme.of(context).colorScheme.surface,
       child: InkWell(
-        onTap: () {
-          // Bo'limga o'tish kodini qo'shing
-        },
+        onTap: onTap,
+
         borderRadius: BorderRadius.circular(12),
         child: Padding(
           padding: EdgeInsets.all(screenWidth * 0.03),

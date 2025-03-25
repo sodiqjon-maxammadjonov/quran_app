@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quran_app/src/core/data/bloc/settings/settings_bloc.dart';
 
 class SettingsGroup extends StatelessWidget {
   final String title;
+  final TextStyle? titleStyle;
   final List<Widget> children;
 
   const SettingsGroup({
     Key? key,
     required this.title,
+    this.titleStyle,
     required this.children,
   }) : super(key: key);
 
@@ -14,7 +18,10 @@ class SettingsGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    return Column(
+    return BlocBuilder<SettingsBloc, SettingsState>(
+  builder: (context, state) {
+      final fontSize = state.fontSize;
+      return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
@@ -24,24 +31,18 @@ class SettingsGroup extends StatelessWidget {
           ),
           child: Text(
             title,
-            style: TextStyle(
-              fontSize: screenWidth * 0.045,
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).colorScheme.primary,
-            ),
+            style: titleStyle ??
+                TextStyle(
+                  fontSize: fontSize,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
           ),
         ),
         Container(
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: Theme.of(context).shadowColor.withOpacity(0.1),
-                blurRadius: 10,
-                offset: const Offset(0, 2),
-              ),
-            ],
           ),
           child: Column(
             children: children,
@@ -49,5 +50,7 @@ class SettingsGroup extends StatelessWidget {
         ),
       ],
     );
+  },
+);
   }
 }

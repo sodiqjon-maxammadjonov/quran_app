@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quran_app/src/presentation/utils/widgets/messanger/custom_scaffold_messanger.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../home/home_creen.dart';
 import '../settings/settings_screen.dart';
 
@@ -27,20 +26,21 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(_selectedIndex == 0 ? 'Home' : 'Settings'),
+        title: Text(_selectedIndex == 0 ? l10n.home : l10n.settings),
       ),
       body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items:  <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: l10n.home,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Settings',
+            label: l10n.settings,
           ),
         ],
         currentIndex: _selectedIndex,

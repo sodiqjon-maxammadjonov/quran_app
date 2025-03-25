@@ -1,6 +1,26 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
+  static final AppTheme _instance = AppTheme._internal();
+  factory AppTheme() => _instance;
+  AppTheme._internal();
+
+  // Theme mode
+  ThemeMode _themeMode = ThemeMode.light;
+  ThemeMode get themeMode => _themeMode;
+
+  // Theme o'zgartirish
+  void toggleTheme() {
+    _themeMode = _themeMode == ThemeMode.light
+        ? ThemeMode.dark
+        : ThemeMode.light;
+  }
+
+  // Theme sozlash
+  void setTheme(ThemeMode mode) {
+    _themeMode = mode;
+  }
+
   // Light Theme
   ThemeData get lightTheme {
     return ThemeData(
