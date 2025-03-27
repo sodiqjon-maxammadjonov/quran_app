@@ -24,15 +24,6 @@ class AyahLoaded extends AyahState {
   List<Object?> get props => [ayahs];
 }
 // 📌 Ayah audio yuklangan holat
-class AyahAudioLoaded extends AyahState {
-  final String audioUrl;
-
-  const AyahAudioLoaded(this.audioUrl);
-
-  @override
-  List<Object?> get props => [audioUrl];
-}
-
 // 📌 Xatolik holati
 class AyahError extends AyahState {
   final String message;

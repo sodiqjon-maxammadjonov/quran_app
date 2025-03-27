@@ -21,16 +21,17 @@ class AyahModel {
 
   factory AyahModel.fromJson(Map<String, dynamic> json) {
     return AyahModel(
-        number: json['number'] ?? 0,
-        arabicText: json['text'] ?? '',
-        translatedText: json['translation'] ?? '',
-        audioUrl: json['audio'] ?? '',
-        juz: json['juz'],
-        page: json['page'],
-        hizbQuarter: json['hizbQuarter'],
-        sajdah: json['sajdah'] ?? false
+      number: json['number'] ?? 0,
+      arabicText: json['text'] ?? '',
+      translatedText: json['translation'] ?? '',
+      audioUrl: json.containsKey('audio') ? json['audio'] : null,
+      juz: json['juz'],
+      page: json['page'],
+      hizbQuarter: json['hizbQuarter'],
+      sajdah: json['sajdah'] ?? false,
     );
   }
+
 
   Map<String, dynamic> toJson() => {
     'number': number,

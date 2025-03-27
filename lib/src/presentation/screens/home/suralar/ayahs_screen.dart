@@ -65,8 +65,7 @@ class _AyahScreenState extends State<AyahScreen> {
                 );
               },
             );
-          }
-
+          } else {
           return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -80,7 +79,7 @@ class _AyahScreenState extends State<AyahScreen> {
                 ),
               ],
             ),
-          );
+          );}
         },
       ),
     );
